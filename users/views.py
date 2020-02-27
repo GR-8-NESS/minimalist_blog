@@ -38,7 +38,7 @@ def register(request):
                 mail_subject, message, to=[to_email]
             )
             email.send()
-            return redirect(reverse('homepage'))
+            return redirect(reverse('login'))
     context = {'form': form}
     return render(request, 'registration/register.html', context=context)
 
@@ -54,7 +54,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         login(request, user)
-        return redirect('homepage')
+        return redirect('login')
         #return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
