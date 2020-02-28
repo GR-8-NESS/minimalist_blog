@@ -24,7 +24,7 @@ class Draft(models.Model):
     title = models.CharField(blank=False, max_length=120)
     body = models.TextField()
     author = models.ForeignKey(UserProfile, on_delete= models.CASCADE)
-    post_id = models.ForeignKey(Post, on_delete= models.CASCADE)
+    post_id = models.ForeignKey(Post, on_delete= models.CASCADE, null=True, blank=True)
     tags = TaggableManager()
 
     def __str__(self):
