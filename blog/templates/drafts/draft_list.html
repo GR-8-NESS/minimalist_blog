@@ -1,0 +1,11 @@
+{% for object in object_list %}
+
+    <h2>
+        <a href="{% url 'draft-detail' username=user.username slug=object.slug %}">
+            {{ object.title }}
+        </a>
+    </h2>
+</a>
+{% endfor %}
+
+<a href="{% url 'create-draft' username=user.username %}">Create Draft </a> 

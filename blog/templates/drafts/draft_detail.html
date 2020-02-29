@@ -1,0 +1,8 @@
+<h2>
+    details of {{object.title}} by {{object.author }}
+</h2>
+
+
+<a href="{% url 'update-draft' username=user.username slug=object.slug %}"> Update Draft </a>
+<br><br>
+<a href="{% url 'delete-draft' username=user.username slug=object.slug %}"> Delete Draft </a>
