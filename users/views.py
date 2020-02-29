@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect, reverse
 from django.http import HttpResponse
 from django.contrib.sites.shortcuts import get_current_site
 
-from django.contrib.auth.models import User
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
@@ -13,6 +13,7 @@ from django.core.mail import EmailMessage
 
 from .tokens import account_activation_token
 from .forms import UserRegistrationForm
+
 # Create your views here.
 
 def register(request):
@@ -58,3 +59,8 @@ def activate(request, uidb64, token):
         #return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
+
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
+
